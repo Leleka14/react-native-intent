@@ -1,15 +1,18 @@
 import React from 'react'
 import {View, StatusBar} from 'react-native'
+import Navigation from '../navigation/index'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     // <Provider store={store}>
-    <View>
+
+    <View style={{flex: 1}}>
       <StatusBar
         translucent
         barStyle="light-content"
         backgroundColor={'transparent'}
       />
+      <Navigation />
     </View>
     //</Provider>
   )
