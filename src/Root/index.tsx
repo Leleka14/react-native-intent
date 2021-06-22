@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <View style={{flex: 1}}>
       <StatusBar
         translucent
-        barStyle="light-content"
+        barStyle="dark-content"
         backgroundColor={'transparent'}
       />
       <Navigation />
