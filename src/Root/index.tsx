@@ -16,7 +16,7 @@ import {
   ReloadInstructions,
   // @ts-ignore
 } from 'react-native/Libraries/NewAppScreen'
-
+//
 const App = () => {
   return (
     <Fragment>
