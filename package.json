@@ -10,8 +10,10 @@
     "lint": "./node_modules/.bin/tslint ./src/**/*.ts{,x}"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.11",
     "react": "16.8.6",
-    "react-native": "0.60.3"
+    "react-native": "0.60.3",
+    "react-native-safe-area-context": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
