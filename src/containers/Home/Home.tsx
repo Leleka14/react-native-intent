@@ -3,7 +3,7 @@ import {ActivityIndicator, FlatList, Text, TextInput, View} from 'react-native'
 import {Transitioning} from 'react-native-reanimated'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import RecipeCard from '../../components/RecipeCard/RecipeCard'
-import {SearchIcon} from '../../assets/icons/Icons'
+import {SearchIcon, ErrorIcon} from '../../assets/icons/Icons'
 import styles from './styles'
 
 interface IProps {
@@ -15,6 +15,7 @@ interface IProps {
   transitionIcon: any
   recipes: any
   onRecipePressed(item: any): void
+  error: string | null
 }
 
 const Home: React.FC<IProps> = ({
@@ -26,6 +27,7 @@ const Home: React.FC<IProps> = ({
   transitionIcon,
   recipes,
   onRecipePressed,
+  error,
 }) => {
   const insets = useSafeAreaInsets()
   const s = styles(insets)
@@ -51,6 +53,13 @@ const Home: React.FC<IProps> = ({
       {isTyping ? (
         <View style={s.spinnerWrapper}>
           <ActivityIndicator size={'large'} />
+        </View>
+      ) : error || recipes.length === 0 ? (
+        <View style={s.errorWrapper}>
+          <ErrorIcon />
+          <Text style={s.errorText}>
+            Ooops, nothing was found,{'\n'}please try again later...
+          </Text>
         </View>
       ) : (
         <FlatList

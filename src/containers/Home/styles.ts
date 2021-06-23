@@ -40,6 +40,16 @@ export default (insets: IProps) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    errorWrapper: {
+      height: '50%',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      flexDirection: 'row',
+      marginHorizontal: '20@s',
+    },
+    errorText: {
+      fontSize: '15@s',
+    },
     list: {
       marginTop: '15@s',
     },

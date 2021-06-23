@@ -13,16 +13,17 @@ const HomeContainer: React.FC = () => {
   const [displaySearchIcon, setDisplaySearchIcon] = useState<boolean>(true)
   const searchIconRef: any = useRef(null)
   const debouncedSearchValue: string = useDebounce(searchValue, 800)
-  const navigation = useNavigation()
+  const navigation = useNavigation() 
 
+  const {recipes, error} = useTypedSelector(({recipesReducer}) => ({
+    recipes: recipesReducer?.recipes ? recipesReducer.recipes : [],
+    error: recipesReducer?.recipesError ? recipesReducer.recipesError : null,
+  }))
+ 
   const transitionIcon = (
     <Transition.Change durationMs={200} interpolation="easeInOut" />
   )
 
-  const {recipes} = useTypedSelector(({recipesReducer}) => ({
-    recipes: recipesReducer?.recipes ? recipesReducer.recipes : []
-  }))
- 
   useEffect(() => {
     if (debouncedSearchValue) {
       fetchRecipes()
@@ -44,10 +45,11 @@ const HomeContainer: React.FC = () => {
         searchIconRef.current.animateNextTransition()
       }
     }
+    setIsTyping(debouncedSearchValue !== searchValue)
+
   }, [searchValue])
 
   const onSearch = (text: string) => {
-    setIsTyping((!!debouncedSearchValue && debouncedSearchValue.length !== 0) || debouncedSearchValue !== searchValue)
     setSearchValue(text)
   }
 
@@ -67,6 +69,7 @@ const HomeContainer: React.FC = () => {
       transitionIcon={transitionIcon}
       recipes={recipes}
       onRecipePressed={onRecipePressed}
+      error={error}
     />
   )
 }
