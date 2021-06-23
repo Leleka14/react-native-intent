@@ -11,15 +11,28 @@ export default (insets: IProps) =>
   ScaledSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'white',
+      backgroundColor: '#FFFFFF',
       paddingTop: insets.top,
     },
-    search: {
+    header: {
+      fontSize: '25@s',
+      textAlign: 'center',
+    },
+    searchWrapper: {
+      marginTop: '10@s',
+      backgroundColor: '#FFFFFF',
+      alignItems: 'center',
+      flexDirection: 'row',
       borderColor: '#DFDFDF',
       borderWidth: '1@s',
       marginHorizontal: '10@s',
       padding: '10@s',
       borderRadius: '10@s',
       fontSize: '15@s',
+    },
+    searchInput: {
+      height: '100%',
+      marginLeft: '10@s',
+      width: '100%',
     },
   })

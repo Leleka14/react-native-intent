@@ -3,7 +3,7 @@ import axios from 'axios'
 class ApiClient {
   apiName = ''
 
-  async getRecepies() {
+  async getRecipes() {
     return axios.get(this.apiName)
   }
 }
