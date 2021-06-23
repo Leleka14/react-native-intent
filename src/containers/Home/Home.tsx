@@ -1,5 +1,5 @@
 import React from 'react'
-import {FlatList, Text, TextInput, View} from 'react-native'
+import {ActivityIndicator, FlatList, Text, TextInput, View} from 'react-native'
 import {Transitioning} from 'react-native-reanimated'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import RecipeCard from '../../components/RecipeCard/RecipeCard'
@@ -14,6 +14,7 @@ interface IProps {
   searchIconRef: any
   transitionIcon: any
   recipes: any
+  onRecipePressed(item: any): void
 }
 
 const Home: React.FC<IProps> = ({
@@ -24,11 +25,12 @@ const Home: React.FC<IProps> = ({
   searchIconRef,
   transitionIcon,
   recipes,
+  onRecipePressed,
 }) => {
   const insets = useSafeAreaInsets()
   const s = styles(insets)
-  const renderItem = ({item}) => {
-    return <RecipeCard item={item} />
+  const renderItem = ({item}: any) => {
+    return <RecipeCard item={item} onPress={onRecipePressed} />
   }
   return (
     <View style={s.container}>
@@ -46,7 +48,19 @@ const Home: React.FC<IProps> = ({
           placeholderTextColor={'#828282'}
         />
       </Transitioning.View>
-      <FlatList data={recipes} renderItem={renderItem} numColumns={2} />
+      {isTyping ? (
+        <View style={s.spinnerWrapper}>
+          <ActivityIndicator size={'large'} />
+        </View>
+      ) : (
+        <FlatList
+          data={recipes}
+          renderItem={renderItem}
+          numColumns={2}
+          keyExtractor={(item: any) => item.title}
+          style={s.list}
+        />
+      )}
     </View>
   )
 }

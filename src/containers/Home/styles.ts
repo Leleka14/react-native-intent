@@ -35,4 +35,12 @@ export default (insets: IProps) =>
       marginLeft: '10@s',
       width: '100%',
     },
+    spinnerWrapper: {
+      height: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    list: {
+      marginTop: '15@s',
+    },
   })

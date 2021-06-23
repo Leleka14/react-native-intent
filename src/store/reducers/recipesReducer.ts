@@ -6,6 +6,7 @@ import {
 
 const recipes = {
   recipes: null,
+  recipesError: null,
 }
 
 export const recipesReducer = (
@@ -16,7 +17,17 @@ export const recipesReducer = (
     case RecipesActionTypes.FETCH_RECIPES:
       return {
         ...state,
+      }
+    case RecipesActionTypes.FETCH_RECIPES_SUCCESS:
+      return {
+        ...state,
         recipes: action.payload,
+        recipesError: null,
+      }
+    case RecipesActionTypes.FETCH_RECIPES_FAILED:
+      return {
+        ...state,
+        recipesError: action.payload,
       }
 
     default:

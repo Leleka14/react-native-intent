@@ -1,33 +1,21 @@
 import React from 'react'
 import {Text, View} from 'react-native'
+import {TouchableOpacity} from 'react-native-gesture-handler'
 import {styles} from './styles'
 
 interface IProps {
-  //   searchValue: string
-  //   onSearch(text: string): void
-  //   displaySearchIcon: boolean
-  //   isTyping: boolean
-  //   searchIconRef: any
-  //   transitionIcon: any
-  //   recipes: any
   item: any
+  onPress(item: any): void
 }
 
-const RecipeCard: React.FC<IProps> = ({
-  //   searchValue,
-  //   onSearch,
-  //   displaySearchIcon,
-  //   isTyping,
-  //   searchIconRef,
-  //   transitionIcon,
-  //   recipes,
-  item,
-}) => {
+const RecipeCard: React.FC<IProps> = ({item, onPress}) => {
   const s = styles
 
   return (
     <View style={s.container}>
-      <Text style={s.title}>{item.title}</Text>
+      <TouchableOpacity style={{flex: 1}} onPress={() => onPress(item)}>
+        <Text style={s.title}>{item.title}</Text>
+      </TouchableOpacity>
     </View>
   )
 }
